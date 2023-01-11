@@ -7,22 +7,15 @@ app.set('view engine','ejs');
 
 //Middleware
 app.use(express.static(__dirname + '/public'));
-app.get('/', (req, res) => {
-    //Primero indicamos la vista y despues un objeto
-  res.render("index",{titulo:"mi titulo dinamico"})
-})
 
-app.get('/contacto', (req, res) => {
-     //Primero indicamos la vista y despues un objeto
-  res.render("contacto",{titulocontacto:"mi titulo dinamico de CONTACTOOOOOO"})
-})
-
+//Llamadas a las rutas:
+app.use('/',require('./router/rutas.js'));
+app.use('/pokemon',require('./router/pokemon.js'));
 app.use((req,res) => {
-    /*
-    res.status(404).sendFile(__dirname + "/public/404.html")
-    */
+    
    res.status(404).render("404",
     {
+        cabecera:"Error 404",
         tituloError:"ERROR DEL 404",
         descripcion:"Page Not Found, Chiquillo. Ares dejame descansar"
    })
