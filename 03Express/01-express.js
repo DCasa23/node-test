@@ -1,7 +1,11 @@
 const express = require('express')
+const bodyParser=require('body-parser')
 const app = express()
-const port = 3005
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json());
 
+require('dotenv').config()
+const port=process.env.PORT||3005 
 /*
 //Conexión a la Base de Datos
 const mongoose = require('mongoose');
@@ -13,10 +17,10 @@ const mongoose = require('mongoose');
 //Variables que tendremos siempre:
 //Lo correcto será declararlas EN VARIABLES DE ENTORNO
 //para que nadie vea directamente nuestras credenciales
-const user = 'cursonode';
+/*const user = 'cursonode';
 const password = 'R9XhxeN7OITL7vDj';
-const dbname = 'database_pokemon';
-const uri = `mongodb+srv://${user}:${password}@cluster0.q4mbecl.mongodb.net/${dbname}?retryWrites=true&w=majority`; //URL de conexión, que completaremos luego
+const dbname = 'database_pokemon';*/
+const uri = `mongodb+srv://${process.env.db_user}:${process.env.db_password}@cluster0.q4mbecl.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`; //URL de conexión, que completaremos luego
 mongoose.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
