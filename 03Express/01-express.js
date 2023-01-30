@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 //Lo correcto será declararlas EN VARIABLES DE ENTORNO
 //para que nadie vea directamente nuestras credenciales
 /*const user = 'cursonode';
-const password = 'R9XhxeN7OITL7vDj';
+const password = 'PaYdnnjikcVSCLRz';
 const dbname = 'database_pokemon';*/
 const uri = `mongodb+srv://${process.env.db_user}:${process.env.db_password}@cluster0.q4mbecl.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority`; //URL de conexión, que completaremos luego
 mongoose.connect(uri,
